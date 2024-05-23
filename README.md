@@ -1,0 +1,149 @@
+
+<div align="center">
+<h1>MSVMamba </h1>
+<h3>Multi-Scale VMamba: Hierarchy in Hierarchy Visual State Space Model</h3>
+
+[//]: # (Paper: &#40;[arXiv 2401.10166]&#40;https://arxiv.org/abs/2401.10166&#41;&#41;)
+
+
+</div>
+
+## Updates
+* **` May. 23th, 2024`**: We release the code, log and ckpt for MSVMamba
+
+
+## Introduction
+MSVMamba is a visual state space model that introduces a hierarchy in hierarchy design to the VMamba model. This repository contains the code for training and evaluating MSVMamba models on the ImageNet-1K dataset for image classification, COCO dataset for object detection, and ADE20K dataset for semantic segmentation.
+## Main Results
+
+### **Classification on ImageNet-1K**
+
+|      name      | pretrain | resolution | acc@1 | #params | FLOPs |                                      logs&ckpts                                      | 
+|:--------------:| :---: | :---: |:-----:|:-------:|:-----:|:------------------------------------------------------------------------------------:| 
+| MSVMamba-Nano  | ImageNet-1K | 224x224 | 77.3  |   7M    | 0.9G  |                                  [log](#)/[ckpt](#)                                  |
+| MSVMamba-Micro | ImageNet-1K | 224x224 | 79.8  |   12M   | 1.5G  |                                  [log](#)/[ckpt](#)                                  | 
+| MSVMamba-Tiny  | ImageNet-1K | 224x224 | 82.8  |   33M   | 4.6G  |                                  [log](#)/[ckpt](#)                                  | 
+
+### **Object Detection on COCO with nightly builds**
+  
+|    Backbone    | #params | FLOPs | Detector | box mAP | mask mAP |     logs&ckpts     | 
+|:--------------:|:-------:|:-----:| :---: |:-------:|:--------:|:------------------:|
+| MSVMamba-Micro |   32M   | 201G  | MaskRCNN@1x |  43.8   |   39.9   | [log](#)/[ckpt](#) |
+| MSVMamba-Tiny  |   53M   | 252G  | MaskRCNN@1x |  46.9   |   42.2   | [log](#)/[ckpt](#) |
+|    MSVMamba-Micro    |   32M   | 201G  | MaskRCNN@3x |  46.3   |   41.8   | [log](#)/[ckpt](#) |
+|    MSVMamba-Tiny    |   73M   | 252G  | MaskRCNN@3x |  48.3   |   43.2   | [log](#)/[ckpt](#) |
+
+
+### **Semantic Segmentation on ADE20K with nightly builds**
+
+| Backbone | Input| #params | FLOPs | Segmentor | mIoU(SS) | mIoU(MS) |                                                        logs/&ckpts                                                        |
+| :---: | :---: |:-------:|:-----:| :---: |:--------:|:--------:|:-------------------------------------------------------------------------------------------------------------------------:|
+| VMamba-T| 512x512 |   42M   | 875G  | UperNet@160k |   45.1   |   45.4   |                                          [log](#abstract)/[ckpt](#)                                          | 
+| VMamba-S| 512x512 |   65M   | 942G  | UperNet@160k |   47.8   |    -     |                                              [log](#)/[ckpt](#)                                              | 
+
+
+## Getting Started
+
+### Installation
+
+**Step 1: Clone the MSVMamba repository:**
+
+To get started, first clone the VMamba repository and navigate to the project directory:
+
+```bash
+git clone https://github.com/MzeroMiko/VMamba.git
+cd VMamba
+```
+
+**Step 2: Environment Setup:**
+
+VMamba recommends setting up a conda environment and installing dependencies via pip. Use the following commands to set up your environment:
+
+***Create and activate a new conda environment***
+
+```bash
+conda create -n msvmamba
+conda activate msvmamba
+```
+
+***Install Dependencies***
+
+```bash
+pip install -r requirements.txt
+cd kernels/selective_scan && pip install .
+```
+<!-- cd kernels/cross_scan && pip install . -->
+
+
+***Dependencies for `Detection` and `Segmentation` (optional)***
+
+```bash
+pip install mmengine==0.10.1 mmcv==2.1.0 opencv-python-headless ftfy regex
+pip install mmdet==3.3.0 mmsegmentation==1.2.2 mmpretrain==1.2.0
+```
+
+<!-- conda create -n cu12 python=3.10 -y && conda activate cu12
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+# install cuda121 for windows
+# install https://visualstudio.microsoft.com/visual-cpp-build-tools/
+pip install timm==0.4.12 fvcore packaging -->
+
+
+### Quick Start
+The steps to train and evaluate MSVMamba models are followed by the same steps as VMamba:
+
+**Classification**
+
+To train VMamba models for classification on ImageNet, use the following commands for different configurations:
+
+```bash
+python -m torch.distributed.launch --nnodes=1 --node_rank=0 --nproc_per_node=8 --master_addr="127.0.0.1" --master_port=29501 main.py --cfg </path/to/config> --batch-size 128 --data-path </path/of/dataset> --output /tmp
+```
+
+If you only want to test the performance (together with params and flops):
+
+```bash
+python -m torch.distributed.launch --nnodes=1 --node_rank=0 --nproc_per_node=1 --master_addr="127.0.0.1" --master_port=29501 main.py --cfg </path/to/config> --batch-size 128 --data-path </path/of/dataset> --output /tmp --pretrained </path/of/checkpoint>
+```
+
+**Detection and Segmentation**
+
+To evaluate with `mmdetection` or `mmsegmentation`:
+```bash
+bash ./tools/dist_test.sh </path/to/config> </path/to/checkpoint> 1
+```
+*use `--tta` to get the `mIoU(ms)` in segmentation*
+
+To train with `mmdetection` or `mmsegmentation`:
+```bash
+bash ./tools/dist_train.sh </path/to/config> 8
+```
+
+
+
+
+
+[//]: # (## Citation)
+
+[//]: # ()
+[//]: # (```)
+
+[//]: # (@article{liu2024vmamba,)
+
+[//]: # (  title={VMamba: Visual State Space Model},)
+
+[//]: # (  author={Liu, Yue and Tian, Yunjie and Zhao, Yuzhong and Yu, Hongtian and Xie, Lingxi and Wang, Yaowei and Ye, Qixiang and Liu, Yunfan},)
+
+[//]: # (  journal={arXiv preprint arXiv:2401.10166},)
+
+[//]: # (  year={2024})
+
+[//]: # (})
+
+[//]: # (```)
+
+## Acknowledgment
+
+This project is based on VMamba([paper](https://arxiv.org/abs/2401.10166), [code](https://github.com/MzeroMiko/VMamba)), Mamba ([paper](https://arxiv.org/abs/2312.00752), [code](https://github.com/state-spaces/mamba)), Swin-Transformer ([paper](https://arxiv.org/pdf/2103.14030.pdf), [code](https://github.com/microsoft/Swin-Transformer)), ConvNeXt ([paper](https://arxiv.org/abs/2201.03545), [code](https://github.com/facebookresearch/ConvNeXt)), [OpenMMLab](https://github.com/open-mmlab),
+ thanks for their excellent works.
+

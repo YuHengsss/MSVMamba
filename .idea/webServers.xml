@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="25cfc9df-705b-4d9d-a0d7-eca8f114588e" name="auto-dl">
+        <fileTransfer accessType="SFTP" host="connect.westc.gpuhub.com" port="55113" sshConfigId="cc52c7c2-d6f6-42da-b176-f0084d3eaf7e" sshConfig="root@connect.westc.gpuhub.com:55113 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

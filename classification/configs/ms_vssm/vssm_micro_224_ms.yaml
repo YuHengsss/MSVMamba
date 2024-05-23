@@ -1,0 +1,19 @@
+MODEL:
+  TYPE: vssm
+  NAME: vssm_micro_ms_e300
+  DROP_PATH_RATE: 0.2
+  VSSM:
+    EMBED_DIM: 64
+    DEPTHS: [ 1, 2, 5, 2]
+    SSM_D_STATE: 1
+    SSM_DT_RANK: "auto"
+    SSM_RATIO: 2.0
+    MLP_RATIO: 0.0
+    DOWNSAMPLE: "v1"
+    PATCHEMBED: "v1"
+    CONVFFN: True
+    ADD_SE: True
+    SSCORE_TYPE: "multiscale_4scan_12"
+    FFN_DROPOUT: 0.0
+
+#ms version: 11.88M & 1.532GFLOPs, 300 epochs,  b32 0.16iter/s

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="PASSWORD" host="gadi.nci.org.au" id="1dc7dbc5-30b9-4670-9e92-70ccf23255a6" port="22" nameFormat="DESCRIPTIVE" username="md0612" useOpenSSHConfig="true" />
+    </configs>
+  </component>
+</project>
