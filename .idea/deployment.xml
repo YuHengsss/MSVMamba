@@ -23,7 +23,7 @@
       <paths name="debug server">
         <serverdata>
           <mappings>
-            <mapping deploy="/mamba/vmamba" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/mamba/msvmamba" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
