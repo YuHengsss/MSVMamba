@@ -3,9 +3,6 @@
 <h1>MSVMamba </h1>
 <h3>Multi-Scale VMamba: Hierarchy in Hierarchy Visual State Space Model</h3>
 
-[//]: # (Paper: &#40;[arXiv 2401.10166]&#40;https://arxiv.org/abs/2401.10166&#41;&#41;)
-
-
 </div>
 
 ## Updates
@@ -30,7 +27,7 @@ MSVMamba is a visual state space model that introduces a hierarchy in hierarchy 
 | MSVMamba-Micro | ImageNet-1K | 224x224 | 79.8  |   12M   | 1.5G  |                                              [log&ckpt](https://drive.google.com/drive/folders/1jfl2GmuKcUB8sPwRlyHK_wT0MjqgljYk?usp=drive_link)                                              | 
 | MSVMamba-Tiny  | ImageNet-1K | 224x224 | 82.8  |   33M   | 4.6G  |                                              [log&ckpt](https://drive.google.com/drive/folders/1ddNWk89ohcxxMuVEaJ2Y5A6xeBKgA7lU?usp=drive_link)                                              | 
 
-### **Object Detection on COCO with nightly builds**
+### **Object Detection on COCO**
   
 |    Backbone    | #params | FLOPs | Detector | box mAP | mask mAP |     logs&ckpts     | 
 |:--------------:|:-------:|:-----:| :---: |:-------:|:--------:|:------------------:|
@@ -40,30 +37,27 @@ MSVMamba is a visual state space model that introduces a hierarchy in hierarchy 
 |    MSVMamba-Tiny    |   73M   | 252G  | MaskRCNN@3x |  48.3   |   43.2   | [log&ckpt](https://drive.google.com/drive/folders/1dK1qFjaU8GmqvsmMr1mgppNJlNacHPtG?usp=drive_link) |
 
 
-### **Semantic Segmentation on ADE20K with nightly builds**
+### **Semantic Segmentation on ADE20K**
 
-| Backbone | Input| #params | FLOPs | Segmentor | mIoU(SS) | mIoU(MS) |                                                        logs/&ckpts                                                        |
-| :---: | :---: |:-------:|:-----:| :---: |:--------:|:--------:|:-------------------------------------------------------------------------------------------------------------------------:|
-| VMamba-T| 512x512 |   42M   | 875G  | UperNet@160k |   45.1   |   45.4   |                                          [log&ckpt](https://drive.google.com/drive/folders/1naZHL4mwTchllAE001SsyZ_z4y_JRF0s?usp=drive_link)                                          | 
-| VMamba-S| 512x512 |   65M   | 942G  | UperNet@160k |   47.8   |    -     |                                              [log&ckpt](https://drive.google.com/drive/folders/1FaFPFExDd_4goIlLjTR7fXsuMRr-vYoY?usp=drive_link)                                              | 
+|   Backbone    | Input| #params | FLOPs | Segmentor | mIoU(SS) | mIoU(MS) |                                                        logs/&ckpts                                                        |
+|:-------------:| :---: |:-------:|:-----:| :---: |:--------:|:--------:|:-------------------------------------------------------------------------------------------------------------------------:|
+|MSVMamba-Micro | 512x512 |   42M   | 875G  | UperNet@160k |   45.1   |   45.4   |                                          [log&ckpt](https://drive.google.com/drive/folders/1naZHL4mwTchllAE001SsyZ_z4y_JRF0s?usp=drive_link)                                          | 
+|  MSVMamba-Tiny   | 512x512 |   65M   | 942G  | UperNet@160k |   47.8   |    -     |                                              [log&ckpt](https://drive.google.com/drive/folders/1FaFPFExDd_4goIlLjTR7fXsuMRr-vYoY?usp=drive_link)                                              | 
 
 
 ## Getting Started
+The steps to create env, train and evaluate MSVMamba models are followed by the same steps as VMamba.
 
 ### Installation
 
 **Step 1: Clone the MSVMamba repository:**
 
-To get started, first clone the VMamba repository and navigate to the project directory:
-
 ```bash
-git clone https://github.com/MzeroMiko/VMamba.git
-cd VMamba
+git clone https://github.com/YuHengsss/MSVMamba.git
+cd MSVMamba
 ```
 
 **Step 2: Environment Setup:**
-
-VMamba recommends setting up a conda environment and installing dependencies via pip. Use the following commands to set up your environment:
 
 ***Create and activate a new conda environment***
 
@@ -96,11 +90,10 @@ pip install timm==0.4.12 fvcore packaging -->
 
 
 ### Quick Start
-The steps to train and evaluate MSVMamba models are followed by the same steps as VMamba:
 
 **Classification**
 
-To train VMamba models for classification on ImageNet, use the following commands for different configurations:
+To train MSVMamba models for classification on ImageNet, use the following commands for different configurations:
 
 ```bash
 python -m torch.distributed.launch --nnodes=1 --node_rank=0 --nproc_per_node=8 --master_addr="127.0.0.1" --master_port=29501 main.py --cfg </path/to/config> --batch-size 128 --data-path </path/of/dataset> --output /tmp
@@ -109,7 +102,7 @@ python -m torch.distributed.launch --nnodes=1 --node_rank=0 --nproc_per_node=8 -
 If you only want to test the performance (together with params and flops):
 
 ```bash
-python -m torch.distributed.launch --nnodes=1 --node_rank=0 --nproc_per_node=1 --master_addr="127.0.0.1" --master_port=29501 main.py --cfg </path/to/config> --batch-size 128 --data-path </path/of/dataset> --output /tmp --pretrained </path/of/checkpoint>
+python -m torch.distributed.launch --nnodes=1 --node_rank=0 --nproc_per_node=1 --master_addr="127.0.0.1" --master_port=29501 main.py --cfg </path/to/config> --batch-size 128 --data-path </path/of/dataset> --output /tmp --resume </path/of/checkpoint> --eval
 ```
 
 **Detection and Segmentation**
@@ -125,28 +118,6 @@ To train with `mmdetection` or `mmsegmentation`:
 bash ./tools/dist_train.sh </path/to/config> 8
 ```
 
-
-
-
-
-[//]: # (## Citation)
-
-[//]: # ()
-[//]: # (```)
-
-[//]: # (@article{liu2024vmamba,)
-
-[//]: # (  title={VMamba: Visual State Space Model},)
-
-[//]: # (  author={Liu, Yue and Tian, Yunjie and Zhao, Yuzhong and Yu, Hongtian and Xie, Lingxi and Wang, Yaowei and Ye, Qixiang and Liu, Yunfan},)
-
-[//]: # (  journal={arXiv preprint arXiv:2401.10166},)
-
-[//]: # (  year={2024})
-
-[//]: # (})
-
-[//]: # (```)
 
 ## Acknowledgment
 
