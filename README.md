@@ -11,8 +11,8 @@
 
 ## Introduction
 MSVMamba is a visual state space model that introduces a hierarchy in hierarchy design to the VMamba model. This repository contains the code for training and evaluating MSVMamba models on the ImageNet-1K dataset for image classification, COCO dataset for object detection, and ADE20K dataset for semantic segmentation.
+Paper will be released soon.
 
-[//]: # (add figure in ./assets/ms2d.jpg for illustration)
 <p align="center">
   <img src="./assets/ms2d.jpg" width="800" />
 </p>
