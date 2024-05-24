@@ -35,7 +35,7 @@ For more information, please refer to our [paper](https://arxiv.org/abs/2405.141
 | MSVMamba-Micro |   32M   | 201G  | MaskRCNN@1x |  43.8   |   39.9   | [log&ckpt](https://drive.google.com/drive/folders/12CrNAGBalU0yoQcQgPTGO5lM397Jc4La?usp=drive_link) |
 | MSVMamba-Tiny  |   53M   | 252G  | MaskRCNN@1x |  46.9   |   42.2   | [log&ckpt](https://drive.google.com/drive/folders/1MogQ6PGdrgsyJckJTL9BJzlMCodJ3epu?usp=drive_link) |
 |    MSVMamba-Micro    |   32M   | 201G  | MaskRCNN@3x |  46.3   |   41.8   | [log&ckpt](https://drive.google.com/drive/folders/10-8cDnRfnk_j4QxMHkhUyecucnM_82pt?usp=drive_link) |
-|    MSVMamba-Tiny    |   73M   | 252G  | MaskRCNN@3x |  48.3   |   43.2   | [log&ckpt](https://drive.google.com/drive/folders/1dK1qFjaU8GmqvsmMr1mgppNJlNacHPtG?usp=drive_link) |
+|    MSVMamba-Tiny    |   53M   | 252G  | MaskRCNN@3x |  48.3   |   43.2   | [log&ckpt](https://drive.google.com/drive/folders/1dK1qFjaU8GmqvsmMr1mgppNJlNacHPtG?usp=drive_link) |
 
 
 ### **Semantic Segmentation on ADE20K**
