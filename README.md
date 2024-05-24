@@ -40,10 +40,10 @@ For more information, please refer to our [paper](https://arxiv.org/abs/2405.141
 
 ### **Semantic Segmentation on ADE20K**
 
-|   Backbone    | Input| #params | FLOPs | Segmentor | mIoU(SS) | mIoU(MS) |                                                        logs/&ckpts                                                        |
-|:-------------:| :---: |:-------:|:-----:| :---: |:--------:|:--------:|:-------------------------------------------------------------------------------------------------------------------------:|
-|MSVMamba-Micro | 512x512 |   42M   | 875G  | UperNet@160k |   45.1   |   45.4   |                                          [log&ckpt](https://drive.google.com/drive/folders/1naZHL4mwTchllAE001SsyZ_z4y_JRF0s?usp=drive_link)                                          | 
-|  MSVMamba-Tiny   | 512x512 |   65M   | 942G  | UperNet@160k |   47.8   |    -     |                                              [log&ckpt](https://drive.google.com/drive/folders/1FaFPFExDd_4goIlLjTR7fXsuMRr-vYoY?usp=drive_link)                                              | 
+|   Backbone    | Input| #params | FLOPs | Segmentor | mIoU(SS) | mIoU(MS) |                                                                                          logs&ckpts                                                                                          |
+|:-------------:| :---: |:-------:|:-----:| :---: |:--------:|:--------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+|MSVMamba-Micro | 512x512 |   42M   | 875G  | UperNet@160k |   45.1   |   45.4   |                                             [log&ckpt](https://drive.google.com/drive/folders/1naZHL4mwTchllAE001SsyZ_z4y_JRF0s?usp=drive_link)                                              | 
+|  MSVMamba-Tiny   | 512x512 |   65M   | 942G  | UperNet@160k |   47.8   |    -     |                                             [log&ckpt](https://drive.google.com/drive/folders/1FaFPFExDd_4goIlLjTR7fXsuMRr-vYoY?usp=drive_link)                                              | 
 
 
 ## Getting Started
