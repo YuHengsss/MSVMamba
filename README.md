@@ -3,14 +3,14 @@
 <h1>MSVMamba </h1>
 <h3>Multi-Scale VMamba: Hierarchy in Hierarchy Visual State Space Model</h3>
 
-Paper: ([arXiv:2405.14174](https://arxiv.org/abs/2405.14174))
+Paper: ([NeurIPS2024](https://openreview.net/pdf?id=r70jUOpDCM))
 </div>
 
 
 
 ## Introduction
 MSVMamba is a visual state space model that introduces a hierarchy in hierarchy design to the VMamba model. This repository contains the code for training and evaluating MSVMamba models on the ImageNet-1K dataset for image classification, COCO dataset for object detection, and ADE20K dataset for semantic segmentation.
-For more information, please refer to our [paper](https://arxiv.org/abs/2405.14174).
+For more information, please refer to our [paper](https://openreview.net/pdf?id=r70jUOpDCM).
 
 <p align="center">
   <img src="./assets/ms2d.jpg" width="800" />
