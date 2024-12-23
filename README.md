@@ -7,6 +7,7 @@ Paper: ([arXiv:2405.14174](https://arxiv.org/abs/2405.14174))
 </div>
 
 ## Updates
+* **` Dec. 23th, 2024`**: We release code for the updated experiments in our NeurIPS 2024 paper in the v2 branch.
 * **` Sep. 26th, 2024`**: Our paper has been accepted by NeurIPS 2024 as a poster. Updated experiments will be available soon.
 * **` May. 23th, 2024`**: We release the code, log and ckpt for MSVMamba
 
