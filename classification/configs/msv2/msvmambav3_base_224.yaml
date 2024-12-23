@@ -1,0 +1,25 @@
+MODEL:
+  TYPE: vssm
+  NAME: msvmambav3_base_224
+  DROP_PATH_RATE: 0.5
+  VSSM:
+    EMBED_DIM: 128
+    DEPTHS: [ 2, 4, 18, 2]
+    SSM_D_STATE: 1
+    SSM_DT_RANK: "auto"
+    SSM_RATIO: 1.0
+    SSM_FORWARDTYPE: "vms" # v3_noz
+    DOWNSAMPLE: "v3"
+    PATCHEMBED: "v2"
+    NORM_LAYER: "ln2d"
+    CONVFFN: True
+    ADD_SE: True
+    CONV_FFN_RATIO: 4
+  DDP: 'torch'
+
+
+TRAIN:
+  EPOCHS: 300
+  WARMUP_EPOCHS: 20
+  BASE_LR: 3e-4
+  MIN_LR: 3e-6
