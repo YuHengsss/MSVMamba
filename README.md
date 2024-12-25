@@ -22,9 +22,9 @@ For more information, please refer to our [paper](https://openreview.net/pdf?id=
 
 |       name       | pretrain | resolution | acc@1 | #params | FLOPs |                                                                              logs&ckpts                                                                               | 
 |:----------------:| :---: | :---: |:-----:|:-------:|:-----:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| MSVMambav3-Tiny  | ImageNet-1K | 224x224 | 83.0  |   32M   | 5.0G  |                                          [ckpt](https://huggingface.co/YuhengSSS/MSVMamba/blob/main/msvmambav3_base_224.pth)                                          | 
+| MSVMambav3-Tiny  | ImageNet-1K | 224x224 | 83.0  |   32M   | 5.0G  |                                          [ckpt](https://huggingface.co/YuhengSSS/MSVMamba/blob/main/msvmambav3_tiny_224.pth)                                          | 
 | MSVMambav3-Small | ImageNet-1K | 224x224 | 84.1  |   50M   | 8.8G  |                                                                               [ckpt](https://huggingface.co/YuhengSSS/MSVMamba/blob/main/msvmambav3_small_224.pth)                                                                                | 
-| MSVMambav3-Base  | ImageNet-1K | 224x224 | 84.4  |   91M   | 16.3G |                                                                               [ckpt](https://huggingface.co/YuhengSSS/MSVMamba/blob/main/msvmambav3_tiny_224.pth)                                                                                | 
+| MSVMambav3-Base  | ImageNet-1K | 224x224 | 84.4  |   91M   | 16.3G |                                                                               [ckpt](https://huggingface.co/YuhengSSS/MSVMamba/blob/main/msvmambav3_base_224.pth)                                                                                | 
 
 
 
